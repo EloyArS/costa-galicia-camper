@@ -1,493 +1,780 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Costa Gallega en Furgo — Guía Camper</title>
-<style>
-  :root {
-    --verde: #1D9E75;
-    --verde-oscuro: #085041;
-    --verde-claro: #E1F5EE;
-    --arena: #FAC775;
-    --azul: #378ADD;
-    --azul-claro: #E6F1FB;
-    --gris: #5F5E5A;
-    --gris-claro: #F1EFE8;
-    --texto: #2C2C2A;
-    --texto-suave: #888780;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Costa Gallega en Furgo — Guía Camper</title>
+  <style>
+    :root {
+      --verde: #1D9E75;
+      --verde-oscuro: #085041;
+      --verde-claro: #E1F5EE;
+      --arena: #FAC775;
+      --azul: #378ADD;
+      --azul-claro: #E6F1FB;
+      --gris: #5F5E5A;
+      --gris-claro: #F1EFE8;
+      --texto: #2C2C2A;
+      --texto-suave: #888780;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-  body {
-    font-family: 'Georgia', serif;
-    background: #f8f7f2;
-    color: var(--texto);
-    line-height: 1.7;
-  }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* HERO */
-  .hero {
-    background: var(--verde-oscuro);
-    color: #fff;
-    padding: 4rem 2rem 3rem;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 40px,
-      rgba(255,255,255,0.02) 40px,
-      rgba(255,255,255,0.02) 41px
-    );
-  }
-  .hero-eyebrow {
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--arena);
-    margin-bottom: 1rem;
-  }
-  .hero h1 {
-    font-size: clamp(2rem, 6vw, 3.8rem);
-    font-weight: normal;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    position: relative;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--arena);
-  }
-  .hero-sub {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    color: rgba(255,255,255,0.7);
-    max-width: 500px;
-    margin: 0 auto 2rem;
-    line-height: 1.5;
-  }
-  .wave {
-    display: block;
-    width: 100%;
-    height: 48px;
-    margin-top: 2rem;
-  }
+    body {
+      font-family: 'Georgia', serif;
+      background: #f8f7f2;
+      color: var(--texto);
+      line-height: 1.7;
+      font-size: 16px;
+    }
 
-  /* NAV ZONA */
-  .nav-zonas {
-    background: #fff;
-    border-bottom: 1px solid #e8e6e0;
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .nav-zonas ul {
-    display: flex;
-    overflow-x: auto;
-    list-style: none;
-    gap: 0;
-    max-width: 900px;
-    margin: 0 auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .nav-zonas ul::-webkit-scrollbar { display: none; }
-  .nav-zonas li a {
-    display: block;
-    padding: 1rem 1.25rem;
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-    color: var(--gris);
-    text-decoration: none;
-    white-space: nowrap;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .nav-zonas li a:hover {
-    color: var(--verde);
-    border-bottom-color: var(--verde);
-  }
+    /* HERO */
+    .hero {
+      background: var(--verde-oscuro);
+      color: #fff;
+      padding: 3.5rem 1.5rem 2.5rem;
+      text-align: center;
+    }
 
-  /* INTRO */
-  .intro {
-    max-width: 660px;
-    margin: 3rem auto;
-    padding: 0 2rem;
-    text-align: center;
-  }
-  .intro p {
-    font-size: 18px;
-    color: var(--gris);
-    line-height: 1.8;
-  }
-  .intro strong { color: var(--texto); font-weight: normal; font-style: italic; }
+    .hero-eyebrow {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--arena);
+      margin-bottom: 0.75rem;
+    }
 
-  /* ZONA SECTION */
-  .zona {
-    max-width: 900px;
-    margin: 0 auto 4rem;
-    padding: 0 2rem;
-  }
-  .zona-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #e0ddd4;
-  }
-  .zona-num {
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--texto-suave);
-    text-transform: uppercase;
-    flex-shrink: 0;
-  }
-  .zona-titulo {
-    font-size: 1.6rem;
-    font-weight: normal;
-    color: var(--verde-oscuro);
-  }
+    .hero h1 {
+      font-size: clamp(2rem, 9vw, 3.8rem);
+      font-weight: normal;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
 
-  /* CARDS */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1rem;
-  }
-  .card {
-    background: #fff;
-    border: 1px solid #e8e6e0;
-    border-radius: 4px;
-    padding: 1.25rem;
-    transition: border-color 0.2s;
-  }
-  .card:hover { border-color: var(--verde); }
-  .card-tipo {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-  }
-  .tipo-area { color: var(--verde); }
-  .tipo-camper { color: var(--azul); }
-  .tipo-pueblo { color: #BA7517; }
-  .tipo-playa { color: #993C1D; }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--arena);
+    }
 
-  .card-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .tipo-area .card-dot { background: var(--verde); }
-  .tipo-camper .card-dot { background: var(--azul); }
-  .tipo-pueblo .card-dot { background: #BA7517; }
-  .tipo-playa .card-dot { background: #993C1D; }
+    .hero-sub {
+      font-family: 'Arial', sans-serif;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.72);
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
 
-  .card h3 {
-    font-size: 1.05rem;
-    font-weight: normal;
-    margin-bottom: 0.4rem;
-    color: var(--texto);
-  }
-  .card p {
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-    color: var(--gris);
-    line-height: 1.6;
-  }
-  .card-maps {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-family: 'Arial', sans-serif;
-    font-size: 12px;
-    color: var(--verde);
-    text-decoration: none;
-    border-bottom: 1px solid var(--verde-claro);
-  }
-  .card-maps:hover { border-bottom-color: var(--verde); }
+    .wave {
+      display: block;
+      width: 100%;
+      height: 36px;
+      margin-top: 1.5rem;
+    }
 
-  /* LEYENDA */
-  .leyenda {
-    background: var(--gris-claro);
-    padding: 1.5rem 2rem;
-    border-radius: 4px;
-    max-width: 900px;
-    margin: 0 auto 3rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-  .leyenda-inner {
-    max-width: 860px;
-    margin: 0 auto;
-  }
-  .leyenda p {
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-    color: var(--gris);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-  }
-  .leyenda-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .leyenda-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-  }
-  .ldot { width: 8px; height: 8px; border-radius: 50%; }
-  .l-area { background: var(--verde); }
-  .l-camper { background: var(--azul); }
-  .l-pueblo { background: #BA7517; }
-  .l-playa { background: #993C1D; }
+    /* NAV ZONAS — sticky, scroll horizontal en móvil */
+    .nav-zonas {
+      background: #fff;
+      border-bottom: 1px solid #e8e6e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-  /* FOOTER */
-  footer {
-    background: var(--verde-oscuro);
-    color: rgba(255,255,255,0.6);
-    text-align: center;
-    padding: 2rem;
-    font-family: 'Arial', sans-serif;
-    font-size: 13px;
-  }
-  footer strong { color: rgba(255,255,255,0.9); font-weight: normal; }
+    .nav-zonas ul {
+      display: flex;
+      overflow-x: auto;
+      list-style: none;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 0.5rem;
+    }
 
-  @media (max-width: 600px) {
-    .hero { padding: 3rem 1.25rem 2rem; }
-    .zona { padding: 0 1.25rem; }
-    .cards { grid-template-columns: 1fr; }
-  }
-</style>
+    .nav-zonas ul::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-zonas li a {
+      display: block;
+      padding: 0.9rem 1rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--gris);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-zonas li a:hover,
+    .nav-zonas li a:active {
+      color: var(--verde);
+      border-bottom-color: var(--verde);
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 2rem 1.5rem;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro p {
+      font-size: 17px;
+      color: var(--gris);
+      line-height: 1.8;
+    }
+
+    .intro strong {
+      color: var(--texto);
+      font-weight: normal;
+      font-style: italic;
+    }
+
+    /* LEYENDA */
+    .leyenda {
+      background: var(--gris-claro);
+      padding: 1rem 1.5rem;
+      margin: 0 1rem 1.5rem;
+      border-radius: 8px;
+    }
+
+    .leyenda p {
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      color: var(--texto-suave);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.6rem;
+    }
+
+    .leyenda-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1rem;
+    }
+
+    .leyenda-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      color: var(--gris);
+    }
+
+    .ldot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .l-area {
+      background: var(--verde);
+    }
+
+    .l-camper {
+      background: var(--azul);
+    }
+
+    .l-pueblo {
+      background: #BA7517;
+    }
+
+    .l-playa {
+      background: #993C1D;
+    }
+
+    /* ZONA SECTION */
+    .zona {
+      padding: 0 1rem 3rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .zona-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #e0ddd4;
+    }
+
+    .zona-num {
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--texto-suave);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .zona-titulo {
+      font-size: 1.5rem;
+      font-weight: normal;
+      color: var(--verde-oscuro);
+    }
+
+    /* CARDS — una columna en móvil, dos en tablet+ */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    @media (min-width: 560px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 800px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e8e6e0;
+      border-radius: 10px;
+      padding: 1rem 1.1rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-tipo {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Arial', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .tipo-area {
+      color: var(--verde);
+    }
+
+    .tipo-camper {
+      color: var(--azul);
+    }
+
+    .tipo-pueblo {
+      color: #BA7517;
+    }
+
+    .tipo-playa {
+      color: #993C1D;
+    }
+
+    .card-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tipo-area .card-dot {
+      background: var(--verde);
+    }
+
+    .tipo-camper .card-dot {
+      background: var(--azul);
+    }
+
+    .tipo-pueblo .card-dot {
+      background: #BA7517;
+    }
+
+    .tipo-playa .card-dot {
+      background: #993C1D;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: normal;
+      margin-bottom: 0.35rem;
+      color: var(--texto);
+    }
+
+    .card p {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      color: var(--gris);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* Botón Maps — grande, táctil, ocupa todo el ancho en móvil */
+    .card-maps {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 0.9rem;
+      padding: 0.65rem 1rem;
+      background: var(--verde-claro);
+      color: var(--verde-oscuro);
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.15s;
+      min-height: 44px;
+      /* mínimo táctil recomendado */
+    }
+
+    .card-maps:hover,
+    .card-maps:active {
+      background: #9FE1CB;
+    }
+
+    .card-maps svg {
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--verde-oscuro);
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    footer strong {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: normal;
+    }
+  </style>
 </head>
+
 <body>
 
-<header class="hero">
-  <p class="hero-eyebrow">Guía camper · Costa gallega</p>
-  <h1>La costa de Galicia<br>en tu <em>furgo</em></h1>
-  <p class="hero-sub">Áreas de autocaravana, playas salvajes, pueblos marineros y miradores para parar a vivir despacio.</p>
-  <svg class="wave" viewBox="0 0 1200 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-    <path d="M0,32 C200,0 400,48 600,24 C800,0 1000,40 1200,20 L1200,48 L0,48 Z" fill="#f8f7f2"/>
-  </svg>
-</header>
+  <header class="hero">
+    <p class="hero-eyebrow">Guía camper · Costa gallega</p>
+    <h1>La costa de Galicia<br>en tu <em>furgo</em></h1>
+    <p class="hero-sub">Áreas de autocaravana, playas salvajes, pueblos marineros y miradores para parar a vivir
+      despacio.</p>
+    <svg class="wave" viewBox="0 0 400 36" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,24 C100,0 200,36 300,18 C350,9 380,28 400,16 L400,36 L0,36 Z" fill="#f8f7f2" />
+    </svg>
+  </header>
 
-<nav class="nav-zonas">
-  <ul>
-    <li><a href="#rias-altas">Rías Altas</a></li>
-    <li><a href="#costa-morte">Costa da Morte</a></li>
-    <li><a href="#rias-baixas">Rías Baixas</a></li>
-    <li><a href="#consejos">Consejos</a></li>
-  </ul>
-</nav>
+  <nav class="nav-zonas">
+    <ul>
+      <li><a href="#rias-altas">Rías Altas</a></li>
+      <li><a href="#costa-morte">Costa da Morte</a></li>
+      <li><a href="#rias-baixas">Rías Baixas</a></li>
+      <li><a href="#consejos">Consejos</a></li>
+    </ul>
+  </nav>
 
-<section class="intro">
-  <p>Más de <strong>1.200 km de costa</strong> llena de rías, cabos, faros y aldeas donde el tiempo va más lento. Esta guía es para recorrerla sin prisa, durmiendo con el sonido del mar.</p>
-</section>
+  <section class="intro">
+    <p>Más de <strong>1.200 km de costa</strong> llena de rías, cabos, faros y aldeas donde el tiempo va más lento. Esta
+      guía es para recorrerla sin prisa, durmiendo con el sonido del mar.</p>
+  </section>
 
-<div class="leyenda">
-  <div class="leyenda-inner">
+  <div class="leyenda">
     <p>Tipo de punto</p>
     <div class="leyenda-items">
-      <div class="leyenda-item"><div class="ldot l-camper"></div> Área camper / autocaravana</div>
-      <div class="leyenda-item"><div class="ldot l-playa"></div> Playa o cala</div>
-      <div class="leyenda-item"><div class="ldot l-pueblo"></div> Pueblo o mirador</div>
-      <div class="leyenda-item"><div class="ldot l-area"></div> Espacio natural</div>
+      <div class="leyenda-item">
+        <div class="ldot l-camper"></div> Área camper
+      </div>
+      <div class="leyenda-item">
+        <div class="ldot l-playa"></div> Playa o cala
+      </div>
+      <div class="leyenda-item">
+        <div class="ldot l-pueblo"></div> Pueblo / mirador
+      </div>
+      <div class="leyenda-item">
+        <div class="ldot l-area"></div> Espacio natural
+      </div>
     </div>
   </div>
-</div>
 
-<!-- RÍAS ALTAS -->
-<section class="zona" id="rias-altas">
-  <div class="zona-header">
-    <span class="zona-num">01</span>
-    <h2 class="zona-titulo">Rías Altas</h2>
-  </div>
-  <div class="cards">
-    <div class="card">
-      <div class="card-tipo tipo-camper"><div class="card-dot"></div> Área camper</div>
-      <h3>Área de Cedeira</h3>
-      <p>Área municipal con servicios completos a 5 min de la playa de Cedeira. Bien situada para explorar la ría.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Cedeira,+A+Coruña" target="_blank">Ver en Maps →</a>
+  <!-- RÍAS ALTAS -->
+  <section class="zona" id="rias-altas">
+    <div class="zona-header">
+      <span class="zona-num">01</span>
+      <h2 class="zona-titulo">Rías Altas</h2>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-area"><div class="card-dot"></div> Espacio natural</div>
-      <h3>Cabo Ortegal</h3>
-      <p>Uno de los cabos más espectaculares de Europa. Los acantilados de los Aguillóns y las vistas al Atlántico son impresionantes. Se puede aparcar cerca.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Cabo+Ortegal" target="_blank">Ver en Maps →</a>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tipo tipo-camper">
+          <div class="card-dot"></div> Área camper
+        </div>
+        <h3>Área de Cedeira</h3>
+        <p>Área municipal con servicios completos a 5 min de la playa de Cedeira. Bien situada para explorar la ría.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Cedeira,+A+Coruña" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-area">
+          <div class="card-dot"></div> Espacio natural
+        </div>
+        <h3>Cabo Ortegal</h3>
+        <p>Uno de los cabos más espectaculares de Europa. Acantilados de los Aguillóns y vistas al Atlántico. Parking
+          gratuito cerca.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Cabo+Ortegal" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-pueblo">
+          <div class="card-dot"></div> Pueblo
+        </div>
+        <h3>Cariño</h3>
+        <p>Pueblo pesquero tranquilo con puerto activo. Buena base para visitar Ortegal. Pulpería recomendada en el
+          puerto.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Cariño,+A+Coruña" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-playa">
+          <div class="card-dot"></div> Playa
+        </div>
+        <h3>Praia de Esteiro (Mañón)</h3>
+        <p>Playa larga y casi siempre vacía en la desembocadura del Sor. Entorno salvaje. Aparcamiento cerca.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Praia+de+Esteiro,+Mañón" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-camper">
+          <div class="card-dot"></div> Área camper
+        </div>
+        <h3>Área de Viveiro</h3>
+        <p>Área bien equipada cerca de la ciudad amurallada de Viveiro. Acceso a pie a playas de Covas y Área.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Viveiro,+Lugo" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-playa">
+          <div class="card-dot"></div> Playa
+        </div>
+        <h3>Praia de Xilloi</h3>
+        <p>Playa escondida cerca de Viveiro, rodeada de pinos. Aguas tranquilas dentro de la ría. Aparcamiento gratuito.
+        </p>
+        <a class="card-maps" href="https://maps.google.com/?q=Praia+de+Xilloi" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-pueblo"><div class="card-dot"></div> Pueblo</div>
-      <h3>Cariño</h3>
-      <p>Pueblo pesquero tranquilo con puerto activo. Buena base para visitar Ortegal y los alrededores. Pulpería recomendada en el puerto.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Cariño,+A+Coruña" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-playa"><div class="card-dot"></div> Playa</div>
-      <h3>Praia de Esteiro (Mañón)</h3>
-      <p>Playa larga y casi siempre vacía en la desembocadura del Sor. Posibilidad de aparcar cerca. Entorno salvaje.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Praia+de+Esteiro,+Mañón" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-camper"><div class="card-dot"></div> Área camper</div>
-      <h3>Área de Viveiro</h3>
-      <p>Área bien equipada cerca de la ciudad amurallada de Viveiro. Acceso a playas de Covas y Área a pie o en bici.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Viveiro,+Lugo" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-playa"><div class="card-dot"></div> Playa</div>
-      <h3>Praia de Xilloi</h3>
-      <p>Playa escondida cerca de Viveiro, rodeada de pinos. Aguas tranquilas dentro de la ría. Aparcamiento gratuito cercano.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Praia+de+Xilloi" target="_blank">Ver en Maps →</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- COSTA DA MORTE -->
-<section class="zona" id="costa-morte">
-  <div class="zona-header">
-    <span class="zona-num">02</span>
-    <h2 class="zona-titulo">Costa da Morte</h2>
-  </div>
-  <div class="cards">
-    <div class="card">
-      <div class="card-tipo tipo-area"><div class="card-dot"></div> Espacio natural</div>
-      <h3>Cabo Vilán</h3>
-      <p>Faro icónico con molinos de viento y acantilados sobre el Atlántico. El punto más occidental de la zona. Parking gratuito.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Cabo+Vilán" target="_blank">Ver en Maps →</a>
+  <!-- COSTA DA MORTE -->
+  <section class="zona" id="costa-morte">
+    <div class="zona-header">
+      <span class="zona-num">02</span>
+      <h2 class="zona-titulo">Costa da Morte</h2>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-pueblo"><div class="card-dot"></div> Pueblo</div>
-      <h3>Muxía</h3>
-      <p>Pueblo de peregrinación con la Ermita da Barca sobre las rocas. Imprescindible al atardecer. Área de autocaravanas en el puerto.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Muxía,+A+Coruña" target="_blank">Ver en Maps →</a>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tipo tipo-area">
+          <div class="card-dot"></div> Espacio natural
+        </div>
+        <h3>Cabo Vilán</h3>
+        <p>Faro icónico con molinos de viento y acantilados sobre el Atlántico. El punto más occidental de la zona.
+          Parking gratuito.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Cabo+Vilán" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-pueblo">
+          <div class="card-dot"></div> Pueblo
+        </div>
+        <h3>Muxía</h3>
+        <p>La Ermita da Barca sobre las rocas al atardecer es imprescindible. Área de autocaravanas en el puerto.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Muxía,+A+Coruña" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-pueblo">
+          <div class="card-dot"></div> Pueblo
+        </div>
+        <h3>Fisterra</h3>
+        <p>El fin del mundo. El faro es destino final del Camino de Santiago. El parking de la punta permite dormir con
+          vistas al cabo.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Faro+de+Fisterra" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-playa">
+          <div class="card-dot"></div> Playa
+        </div>
+        <h3>Praia de Carnota</h3>
+        <p>La playa de arena más larga de Galicia (7 km). Sistema dunar impresionante. Cerca del hórreo de Carnota, el
+          mayor del mundo.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Praia+de+Carnota" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-camper">
+          <div class="card-dot"></div> Área camper
+        </div>
+        <h3>Área de Camariñas</h3>
+        <p>Área tranquila en un pueblo conocido por sus encajeras. Buena base para Vilán y el tramo norte da Morte.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Camariñas,+A+Coruña" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-area">
+          <div class="card-dot"></div> Espacio natural
+        </div>
+        <h3>Monte Pindo</h3>
+        <p>El "Olimpo celta". Granito, helechos y vistas al mar. Ruta de senderismo desde Pindo (2-3 h). Parking en el
+          pueblo.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Monte+Pindo,+Galicia" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-pueblo"><div class="card-dot"></div> Pueblo</div>
-      <h3>Fisterra</h3>
-      <p>El fin del mundo. El faro de Fisterra es destino final del Camino de Santiago. El aparcamiento de la punta permite dormir con vistas al cabo.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Faro+de+Fisterra" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-playa"><div class="card-dot"></div> Playa</div>
-      <h3>Praia de Carnota</h3>
-      <p>La playa de arena más larga de Galicia (7 km). Dune system impresionante. Cerca del hórreo de Carnota, el mayor del mundo.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Praia+de+Carnota" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-camper"><div class="card-dot"></div> Área camper</div>
-      <h3>Área de Camariñas</h3>
-      <p>Área tranquila en un pueblo conocido por sus encajeras. Buena base para Vilán y para recorrer el tramo norte da Morte.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Camariñas,+A+Coruña" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-area"><div class="card-dot"></div> Espacio natural</div>
-      <h3>Monte Pindo</h3>
-      <p>Llamado el "Olimpo celta". Granito, helechos y vistas al mar. Ruta de senderismo desde Pindo (2-3 h). Aparcamiento en el pueblo.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Monte+Pindo,+Galicia" target="_blank">Ver en Maps →</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- RÍAS BAIXAS -->
-<section class="zona" id="rias-baixas">
-  <div class="zona-header">
-    <span class="zona-num">03</span>
-    <h2 class="zona-titulo">Rías Baixas</h2>
-  </div>
-  <div class="cards">
-    <div class="card">
-      <div class="card-tipo tipo-camper"><div class="card-dot"></div> Área camper</div>
-      <h3>Área de Ribeira</h3>
-      <p>Área municipal bien equipada en la entrada a la Ría de Arousa. Punto de partida ideal para las islas Cíes en ferry.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Ribeira,+A+Coruña" target="_blank">Ver en Maps →</a>
+  <!-- RÍAS BAIXAS -->
+  <section class="zona" id="rias-baixas">
+    <div class="zona-header">
+      <span class="zona-num">03</span>
+      <h2 class="zona-titulo">Rías Baixas</h2>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-area"><div class="card-dot"></div> Espacio natural</div>
-      <h3>Islas Cíes</h3>
-      <p>Parque Nacional Marítimo-Terrestre. Se llega en ferry desde Vigo, Baiona o Cangas. La Praia das Rodas fue elegida la mejor playa del mundo por The Guardian.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Islas+Cíes" target="_blank">Ver en Maps →</a>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tipo tipo-camper">
+          <div class="card-dot"></div> Área camper
+        </div>
+        <h3>Área de Ribeira</h3>
+        <p>Área municipal bien equipada en la entrada a la Ría de Arousa. Punto de partida para las islas Cíes en ferry.
+        </p>
+        <a class="card-maps" href="https://maps.google.com/?q=Ribeira,+A+Coruña" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-area">
+          <div class="card-dot"></div> Espacio natural
+        </div>
+        <h3>Islas Cíes</h3>
+        <p>Parque Nacional Marítimo-Terrestre. Ferry desde Vigo, Baiona o Cangas. La Praia das Rodas, una de las mejores
+          del mundo.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Islas+Cíes" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-pueblo">
+          <div class="card-dot"></div> Pueblo
+        </div>
+        <h3>Combarro</h3>
+        <p>Uno de los conjuntos de hórreos mariñeiros más bonitos de Galicia. El pueblo sale sobre el mar. Visita al
+          atardecer.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Combarro,+Pontevedra" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-playa">
+          <div class="card-dot"></div> Playa
+        </div>
+        <h3>Isla de Ons</h3>
+        <p>Ferry desde Bueu, Sanxenxo y Portonovo. Acantilados, bufones y silencio. Reserva con antelación en verano.
+        </p>
+        <a class="card-maps" href="https://maps.google.com/?q=Isla+de+Ons" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-camper">
+          <div class="card-dot"></div> Área camper
+        </div>
+        <h3>Área de Baiona</h3>
+        <p>Zona de pernocta cerca del Castillo de Monterreal. Puerto con bares y marisquerías. Acceso a pie al centro.
+        </p>
+        <a class="card-maps" href="https://maps.google.com/?q=Baiona,+Pontevedra" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-area">
+          <div class="card-dot"></div> Espacio natural
+        </div>
+        <h3>Cabo Home</h3>
+        <p>Faros y vistas directas a las Cíes. Atardeceres legendarios. Parking gratuito todo el año.</p>
+        <a class="card-maps" href="https://maps.google.com/?q=Cabo+Home,+Pontevedra" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Ver en Maps
+        </a>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-pueblo"><div class="card-dot"></div> Pueblo</div>
-      <h3>Combarro</h3>
-      <p>Uno de los conjuntos de hórreos mariñeiros más bonitos de Galicia. El pueblo sale sobre el mar. Visita al atardecer.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Combarro,+Pontevedra" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-playa"><div class="card-dot"></div> Playa</div>
-      <h3>Praia de Melide (Ons)</h3>
-      <p>En la Isla de Ons. Hay ferry desde Bueu, Sanxenxo y Portonovo. Acantilados, bufones y silencio. Reserva con antelación en verano.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Isla+de+Ons" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-camper"><div class="card-dot"></div> Área camper</div>
-      <h3>Área de Baiona</h3>
-      <p>Zona de pernocta cerca de la muralla del Castillo de Monterreal. Puerto con bares y marisquerías. Acceso a pie al centro.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Baiona,+Pontevedra" target="_blank">Ver en Maps →</a>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-area"><div class="card-dot"></div> Espacio natural</div>
-      <h3>Cabo Home</h3>
-      <p>Cabo al sur de la Ría de Vigo con faros y vistas directas a las Cíes. Atardeceres legendarios. Parking gratuito todo el año.</p>
-      <a class="card-maps" href="https://maps.google.com/?q=Cabo+Home,+Pontevedra" target="_blank">Ver en Maps →</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- CONSEJOS -->
-<section class="zona" id="consejos">
-  <div class="zona-header">
-    <span class="zona-num">04</span>
-    <h2 class="zona-titulo">Consejos para la furgo</h2>
-  </div>
-  <div class="cards">
-    <div class="card">
-      <div class="card-tipo tipo-camper"><div class="card-dot"></div> Normativa</div>
-      <h3>Dónde se puede dormir</h3>
-      <p>En Galicia está permitido pernoctar en áreas señalizadas. Fuera de ellas, busca zonas sin señal prohibitoria. Nunca en playas o parques naturales protegidos.</p>
+  <!-- CONSEJOS -->
+  <section class="zona" id="consejos">
+    <div class="zona-header">
+      <span class="zona-num">04</span>
+      <h2 class="zona-titulo">Consejos para la furgo</h2>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-pueblo"><div class="card-dot"></div> App útil</div>
-      <h3>Park4Night y Campercontact</h3>
-      <p>Las dos mejores apps para encontrar áreas de pernocta verificadas por otros viajeros. Funcionan sin conexión con mapa descargado.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-tipo tipo-camper">
+          <div class="card-dot"></div> Normativa
+        </div>
+        <h3>Dónde se puede dormir</h3>
+        <p>En Galicia está permitido pernoctar en áreas señalizadas. Fuera de ellas, busca zonas sin señal prohibitoria.
+          Nunca en playas ni parques naturales protegidos.</p>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-pueblo">
+          <div class="card-dot"></div> Apps útiles
+        </div>
+        <h3>Park4Night y Campercontact</h3>
+        <p>Las dos mejores apps para encontrar áreas verificadas por otros viajeros. Funcionan sin conexión con mapa
+          descargado.</p>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-area">
+          <div class="card-dot"></div> Tiempo
+        </div>
+        <h3>Mejor época</h3>
+        <p>Mayo–junio y septiembre son ideales: sin aglomeraciones y días largos. Julio–agosto es alta temporada y
+          muchas áreas se llenan.</p>
+      </div>
+      <div class="card">
+        <div class="card-tipo tipo-playa">
+          <div class="card-dot"></div> Aviso
+        </div>
+        <h3>El viento en la Costa da Morte</h3>
+        <p>Las furgos son sensibles al viento lateral. El tramo entre Malpica y Fisterra puede ser muy ventoso. Consulta
+          la previsión antes de salir.</p>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-tipo tipo-area"><div class="card-dot"></div> Tiempo</div>
-      <h3>Mejor época</h3>
-      <p>Mayo–junio y septiembre son perfectos: sin aglomeraciones, precios razonables y días largos. Julio–agosto es alta temporada y muchas áreas se llenan.</p>
-    </div>
-    <div class="card">
-      <div class="card-tipo tipo-playa"><div class="card-dot"></div> Aviso</div>
-      <h3>El viento en la Costa da Morte</h3>
-      <p>Las furgos son sensibles al viento lateral. El tramo entre Malpica y Fisterra puede ser muy ventoso. Consulta la previsión antes de salir.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <p>Hecho con ganas de perderse · <strong>Costa Gallega Camper</strong></p>
-  <p style="margin-top:0.4rem; font-size:12px;">Actualiza las áreas de pernocta en Park4Night antes de salir — las normativas cambian.</p>
-</footer>
+  <footer>
+    <p><strong>Costa Gallega Camper</strong></p>
+    <p style="margin-top:0.4rem; font-size:12px;">Actualiza las áreas de pernocta en Park4Night antes de salir — las
+      normativas cambian.</p>
+  </footer>
 
 </body>
+
 </html>
