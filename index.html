@@ -9,6 +9,7 @@
     :root {
       --verde: #1D9E75;
       --verde-oscuro: #085041;
+      --verde-suave: #354906;
       --verde-claro: #E1F5EE;
       --arena: #FAC775;
       --azul: #378ADD;
@@ -373,7 +374,7 @@
     /* MENÚ PRINCIPAL (secciones)      */
     /* ============================== */
     .main-tabs {
-      background: var(--verde-oscuro);
+      background: var(--verde-suave);
       position: sticky;
       top: 0;
       z-index: 200;
@@ -472,19 +473,17 @@
     }
 
     .video-embed {
-      position: relative;
       width: 100%;
-      padding-top: 56.25%;
-      background: #1a1a1a;
+      aspect-ratio: 16 / 9;
+      /* Fuerza la proporción horizontal estándar */
+      background: #000;
     }
 
-    .video-embed iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .video-embed video {
       width: 100%;
       height: 100%;
-      border: 0;
+      object-fit: contain;
+      /* Centra el vídeo vertical con barras negras a los lados */
     }
 
     .video-info {
@@ -1087,7 +1086,7 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <video controls width="100%" preload="metadata" poster="assets/images/miniatura.jpg">
+          <video controls width="100%" preload="metadata">
             <source src="/videos/Conduccion.mp4" type="video/mp4">
             Tu navegador no soporta la reproducción de vídeos.
           </video>
@@ -1103,52 +1102,67 @@
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe src="https://drive.google.com/file/d/TU_ID_VIDEO_GAS/preview" allow="autoplay"
-            allowfullscreen></iframe>
+          <img src="/imágenes/guantera.jpg" alt="Guantera" style="width:100%; height:auto; border-radius:8px;">
         </div>
         <div class="video-info">
           <div class="video-tipo">
-            <div class="card-dot"></div>Instalación de gas
+            <div class="card-dot"></div>Utensilios guantera
           </div>
-          <h3>Bombona y fogones</h3>
-          <p>Apertura de la llave de gas, encendido seguro de los fogones y normas básicas.</p>
+          <h3>Guantera</h3>
+          <p>Utensilios complementarios en guantera:</p>
+          <ul>
+            <li>Chaleco</li>
+            <li>Locker</li>
+            <li>Baliza</li>
+            <li>Botiquín</li>
+            <li>Linternas</li>
+            <li>Documentación</li>
+
         </div>
       </div>
 
       <div class="video-card">
         <div class="video-embed">
-          <iframe src="https://drive.google.com/file/d/TU_ID_VIDEO_ELECTRICIDAD/preview" allow="autoplay"
-            allowfullscreen></iframe>
-        </div>
-        <div class="video-info">
-          <div class="video-tipo">
-            <div class="card-dot"></div>Electricidad
-          </div>
-          <h3>Batería y toma de 220V</h3>
-          <p>Cómo conectar al enchufe del camping y cuidar la batería auxiliar durante el viaje.</p>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-embed">
-          <iframe src="https://drive.google.com/file/d/TU_ID_VIDEO_NEVERA/preview" allow="autoplay"
-            allowfullscreen></iframe>
+          <video controls width="100%" preload="metadata">
+            <source src="/videos/Nevera.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de vídeos.
+          </video>
         </div>
         <div class="video-info">
           <div class="video-tipo">
             <div class="card-dot"></div>Nevera
           </div>
-          <h3>Encendido y modos de la nevera</h3>
-          <p>Diferencia entre modo gas, batería y 220V, y cuánto tarda en enfriar.</p>
+          <h3>Funcionamiento de la nevera</h3>
+          <p>Botón de encendido y flechas para indicar temperatura.</p>
+          <p>Confirma de forma automática.</p>
+          <p>De nuevo boton de encendido para apagar.</p>
         </div>
       </div>
 
+      <div class="video-card">
+        <div class="video-embed">
+          <<div class="video-embed">
+            <img src="/imágenes/valvulas.jpg" alt="Guantera" style="width:100%; height:auto; border-radius:8px;">
+        </div>
+      </div>
+      <div class="video-info">
+        <div class="video-tipo">
+          <div class="card-dot"></div>Válvula de agua
+        </div>
+        <h3>Funcionamiento de la válvula de agua</h3>
+        <p>Válvulas superiores en horizontal: ON
+        <p>Válvulas superiores en vertical: OFF
+        <p>Válvulas inferiores en horizontal es solo para cargar el depósito.
+        </p>
+      </div>
     </div>
 
-    <p
-      style="text-align:center; font-family:'Arial',sans-serif; font-size:12px; color:var(--texto-suave); padding:0 1.5rem 2.5rem;">
-      ¿No encuentras algo o tienes dudas? Escríbenos por WhatsApp con el botón verde.
-    </p>
+  </div>
+
+  <p
+    style="text-align:center; font-family:'Arial',sans-serif; font-size:12px; color:var(--texto-suave); padding:0 1.5rem 2.5rem;">
+    ¿No encuentras algo o tienes dudas? Escríbenos por WhatsApp con el botón verde.
+  </p>
 
   </div><!-- /page-furgo -->
 
@@ -1178,7 +1192,7 @@
       </div>
       <p class="wa-msg">¿Dudas sobre la furgo, una parada de la ruta o algo que no funciona? Escríbenos directamente por
         WhatsApp.</p>
-      <a class="wa-btn" id="wa-link" href="https://wa.me/34600000000" target="_blank" rel="noopener">
+      <a class="wa-btn" id="wa-link" href="https://wa.me/34617649055" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="#fff" width="18" height="18">
           <path
             d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.27-1.38a9.9 9.9 0 0 0 4.77 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.07h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.13.82.83-3.05-.2-.31a8.2 8.2 0 0 1-1.26-4.3c0-4.55 3.7-8.25 8.25-8.25 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.25-8.25 8.25zm4.52-6.18c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01s-.43.06-.66.31c-.23.25-.86.84-.86 2.04 0 1.2.88 2.37 1 2.53.12.17 1.73 2.64 4.19 3.7.59.25 1.04.4 1.4.52.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.14-1.18-.06-.11-.23-.17-.48-.29z" />
